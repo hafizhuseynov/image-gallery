@@ -1,0 +1,102 @@
+*,*::before,*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+    width: 960px;
+    margin: 0 auto;
+}
+
+.full-img {
+    position: relative;
+    width: 960px;
+    height: 640px;
+    
+}
+
+.displayed-img{
+    border-radius: 12px;
+    border-bottom-right-radius: 4vw;
+}
+
+.overlay {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 960px;
+    height: 640px;
+    background-color: rgba(0,0,0,0);
+    transition: 0.5s;
+  }
+
+button.dark, button.light{
+    color: white;
+    display: block;
+    letter-spacing:1mm;
+    padding: 8px;
+    margin: 12px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    cursor: pointer;
+    border: none;
+    background-color: #777;
+    border-radius: 8px;
+}
+
+button.slider {
+    justify-self: center;
+    align-self: center;
+    margin: 0 16px;
+    border: none;
+    border-radius: 16px;
+    background: none;
+    padding: 0 4px;
+    height: 200px;
+    font-size: 5em;
+    color: #aaa;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+button.slider:hover{
+    color: white;
+    background-color: rgba(255,255,255, 0.25) ;
+}
+
+h1{
+    text-align: center;
+    padding: 16px;
+    font-size: 2em;
+}
+
+.thumb-bar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.thumb-bar img{
+    margin-top: 24px;
+    display: block;
+    width: 18%;
+    float: left;
+    cursor: pointer;   
+    transition: 0.3s;
+    border-radius: 12px;
+}
+
+.displayed-img{
+    transition: 0.3s ease-out;
+}
+
+.thumb-bar img:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+
+
