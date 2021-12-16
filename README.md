@@ -1,1 +1,2 @@
-# image-gallery
+# Link to to preview | [Gallery](https://hafizhuseynov.github.io/image-gallery/)
+There will be upgrades.
