@@ -1,12 +1,10 @@
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
-const currentImage = document.querySelector('.display img');
+const currentImage = document.querySelector('.currentImage');
 const thumbBox = document.querySelector('.thumb-box');
 const images = [];
 
 let thumb_counter = 1;
-//Creating thumbnails
-
 function init(){//Activating first thumbnail by default
   for(let i=0;i < 5;i++){
     const imageThumb = document.createElement('img');
@@ -25,9 +23,7 @@ function init(){//Activating first thumbnail by default
 observer = new MutationObserver((changes) => { //Observer, updates thumbnails, whenever 'src' of currentImage is changed
   changes.forEach(change => {
       if(change.attributeName.includes('src')){
-        for(let i=images.length-1;i >= 0; i--){
-          images[i].removeAttribute('class');
-        }
+        images.forEach(image =>image.removeAttribute('class'))
         images[thumb_counter-1].setAttribute('class', 'active');
       }
   });
