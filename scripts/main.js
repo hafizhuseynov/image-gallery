@@ -1,31 +1,43 @@
-const thumbBox = document.querySelector('.thumb-box');
-const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
 const currentImage = document.querySelector('.currentImage');
-let thumb_counter = 1;
+const thumbBox = document.querySelector('.thumb-box');
+const images = [];
 
+
+let thumb_counter = 1;
 //Creating thumbnails
 for(let i=0;i < 5;i++){
   const imageThumb = document.createElement('img');
   imageThumb.setAttribute('src','images/img'+(i+1)+'.jpg');
-  imageThumb.setAttribute('class','thumb');
+  images.push(imageThumb);
   thumbBox.appendChild(imageThumb);
+
   imageThumb.onclick = function(e) {
-      thumb_counter = Number(e.target.src[32]);
-      currentImage.src = e.target.src;
-    }
+    thumb_counter = Number(e.target.getAttribute('src')[10]);
+    currentImage.setAttribute('src', e.target.getAttribute('src')) ;
+    updateThumb();
+  }
 }
 
+updateThumb();
+
 nextBtn.onclick = function(){
-  console.log("Nextbtn: Previous: " + thumb_counter);
   (thumb_counter == 5)? thumb_counter = 1 : thumb_counter += 1;
   currentImage.setAttribute('src','images/img'+thumb_counter+'.jpg');
-  console.log("Nextbtn: Next: " + thumb_counter);
+  updateThumb();
+  
 }
 
 prevBtn.onclick = function() {
-  console.log("prevBtn: Previous: " + thumb_counter);
   (thumb_counter == 1)? thumb_counter = 5 : thumb_counter -= 1;
   currentImage.setAttribute('src','images/img'+thumb_counter+'.jpg');
-  console.log("prevBtn: Next: " + thumb_counter);
+  updateThumb();
+}
+
+function updateThumb(){
+  for(let i=images.length-1;i >= 0; i--){
+    images[i].removeAttribute('class');
+  }
+  images[thumb_counter-1].setAttribute('class', 'active');
 }

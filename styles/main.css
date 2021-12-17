@@ -36,7 +36,7 @@ button.control {
   padding: 0 1.2%;
   height: 33%;
   font-size: 3em;
-  color: #bbb;
+  color: #aaa;
   cursor: pointer;
   transition: all 0.5s ease;
 }
@@ -72,10 +72,11 @@ button.slider:hover{
 }
 
 .thumb-box img:hover{
-  box-shadow: 0 5px rgba(93, 64, 55, 0.4), 0 10px rgba(93, 64, 55, 0.3),
-              0 15px rgba(93, 64, 55, 0.2), 0 20px rgba(93, 64, 55, 0.1),
-              0 25px rgba(93, 64, 55, 0.05),
-              -5px 5px 40px rgba(100, 0, 0, 0.4);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.active{
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .fade{
