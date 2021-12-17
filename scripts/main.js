@@ -3,6 +3,7 @@ const nextBtn = document.querySelector('.next');
 const currentImage = document.querySelector('.currentImage');
 const thumbBox = document.querySelector('.thumb-box');
 const captions = ["Flower", "Cup", "Lamp", "Board", "Cubes"];
+const modalImage = document.querySelector('.content');
 const images = [];
 
 let thumb_counter = 1;
@@ -33,11 +34,11 @@ function addFadeEffect(){
 function showModal(image){
   const modal = document.querySelector('.modal');
   const close = document.getElementById('close');
-  const modalImage = document.querySelector('.content');
   const modalImageCaption = document.getElementById('caption');
-  
+
   modalImage.setAttribute('src', image.getAttribute('src'));
   modalImageCaption.textContent = image.alt;
+  modal.appendChild(thumbBox);
 
   close.addEventListener('click', () => {
     modal.style.display ='none';
@@ -52,6 +53,8 @@ observer = new MutationObserver((changes) => { //Observer, updates thumbnails, w
         images[thumb_counter-1].setAttribute('class', 'active');
         addFadeEffect();
         currentImage.setAttribute('alt',images[thumb_counter-1].alt);
+        console.log(currentImage.src);
+        modalImage.src = currentImage.src;
       }
   });
 });
