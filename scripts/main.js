@@ -2,8 +2,6 @@ const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const currentImage = document.querySelector('.currentImage');
 const thumbBox = document.querySelector('.thumb-box');
-const captions = ["Flower", "Cup", "Lamp", "Board", "Cubes"];
-const modalImage = document.querySelector('.content');
 const images = [];
 
 let thumb_counter = 1;
@@ -11,8 +9,10 @@ function init(){//Activating first thumbnail by default
   for(let i=0;i < 5;i++){
     const imageThumb = document.createElement('img');
     imageThumb.setAttribute('src','images/img'+(i+1)+'.jpg');
-    imageThumb.setAttribute('alt',captions[i]);
     images.push(imageThumb);
+    images.addEventListener('click', (e) => {
+      showModal(e.target);
+    })
     thumbBox.appendChild(imageThumb);
   
     imageThumb.onclick = function(e) {
@@ -21,7 +21,6 @@ function init(){//Activating first thumbnail by default
     }
   }
   images[0].setAttribute('class', 'active');
-  currentImage.alt = captions[0];
 }
 
 function addFadeEffect(){
@@ -32,16 +31,18 @@ function addFadeEffect(){
 }
 
 function showModal(image){
+  const modalImage = document.querySelector('.content');
+  const modalThumbnails = document.querySelector('.thumbnails');
   const modal = document.querySelector('.modal');
   const close = document.getElementById('close');
-  const modalImageCaption = document.getElementById('caption');
-
   modalImage.setAttribute('src', image.getAttribute('src'));
-  modalImageCaption.textContent = image.alt;
-  modal.appendChild(thumbBox);
+  modalImage.classList.replace('zoom-out','zoom-in');
 
   close.addEventListener('click', () => {
-    modal.style.display ='none';
+    modalImage.classList.replace('zoom-in','zoom-out');
+    setTimeout(() => {
+      modal.style.display ='none';
+    }, 400);
   })
   modal.style.display = 'block';
 }
@@ -52,9 +53,6 @@ observer = new MutationObserver((changes) => { //Observer, updates thumbnails, w
         images.forEach(image =>image.removeAttribute('class'))
         images[thumb_counter-1].setAttribute('class', 'active');
         addFadeEffect();
-        currentImage.setAttribute('alt',images[thumb_counter-1].alt);
-        console.log(currentImage.src);
-        modalImage.src = currentImage.src;
       }
   });
 });
