@@ -10,11 +10,7 @@ function init(){//Activating first thumbnail by default
     const imageThumb = document.createElement('img');
     imageThumb.setAttribute('src','images/img'+(i+1)+'.jpg');
     images.push(imageThumb);
-    images.addEventListener('click', (e) => {
-      showModal(e.target);
-    })
-    thumbBox.appendChild(imageThumb);
-  
+    thumbBox.appendChild(imageThumb); 
     imageThumb.onclick = function(e) {
       thumb_counter = Number(e.target.getAttribute('src')[10]);
       currentImage.setAttribute('src', e.target.getAttribute('src'));
